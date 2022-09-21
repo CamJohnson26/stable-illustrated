@@ -14,10 +14,15 @@ sentences = [i.text.strip() for i in nlp(text).sents]
 sentences = [s.replace(':', '-') for s in sentences] # ':' is a reserved keyword
 sentences = [s.replace('\n', ' ') for s in sentences]
 
-with open(join('books', 'Genesis', '1.output.txt'), 'w') as f:
+with open(join('books', 'Genesis', '1.prompt.txt'), 'w') as f:
     counter = 0
     for s in sentences:
         prompt = get_prompt(s, 'books - Genesis - 1', counter)
         f.write(prompt)
         f.write('\n')
         counter += 1
+
+with open(join('books', 'Genesis', '1.output.txt'), 'w') as f:
+    for s in sentences:
+        f.write(s)
+        f.write('\n')
