@@ -12,6 +12,7 @@ nlp = English()
 nlp.add_pipe('sentencizer')
 sentences = [i.text.strip() for i in nlp(text).sents]
 sentences = [s.replace(':', '-') for s in sentences] # ':' is a reserved keyword
+sentences = [s.replace('\n', ' ') for s in sentences]
 
 with open(join('books', 'Genesis', '1.output.txt'), 'w') as f:
     counter = 0
